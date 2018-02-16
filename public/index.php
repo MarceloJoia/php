@@ -1,15 +1,12 @@
 <?php
 
-//chdir(dirname(__DIR__));
-define('APP_PATH', __DIR__.'/../');
+define('APP_PATH', __DIR__ . '/../');
 
-include APP_PATH . 'lib/SplClassLoader.php';
+include APP_PATH . 'lib/Ps4AutoloaderClass.php';
 
-//Registro das bibliotecas
-$loader = new SplClassLoader('Guzzle','lib/vendor/guzzle/src');//caminho
+$loader = new Psr4AutoloaderClass();
+
+$loader->addNamespace('SON', 'src');
 $loader->register();
 
-$loader = new SplClassLoader('SON','src');
-$loader->register();
-
-include APP_PATH . 'src/index.php';
+include APP_PATH.'src/index.php';
